@@ -1,0 +1,163 @@
+11/14/24
+klt-test
+devel@pi5-80:~/rp2350-freeRTOS/build $ cp klt-test/klt-test.uf2 /media/devel/RP2350/
+Welcome to minicom 2.8
+
+OPTIONS: I18n 
+Port /dev/ttyACM0, 10:13:01
+
+Press CTRL-A Z for help on special keys
+                                                        
+setting pointers                                        
+ptrs.inp_buf = 0x20003020 ptrs.out_buf = 0x20005020     
+ncols & nrows and img1 were set by pgmReadHeaderFile    
+img1 = 0x2007ffd8 img2 = 0x20080fd8                     
+head 0x20007060 tail 0x20007060 end 0x200070e0 top 0x20007060
+this is testing floating point needed for the KLT 100.00000 0.33333 300.00299 
+this is testing floating point needed for the KLT 100.00000 0.33333 33.33300 
+ncols 64 nrows 64
+tc 0x20007108 fl 0x20007188
+
+The following 3 examples need to be connected pin1 pin2 pin3 minicom myusb0
+
+example0.uf2
+devel@pi5-80:~/rp2350-freeRTOS/build $ cp pico-littlefs/example0.uf2 /media/devel/RP2350/
+format (N/y) ?
+depres y
+format (N/y) ? 
+FS: blocks 64, block size 4096, used 2
+Boot count: 1
+File size (should be 4) : 4
+
+example1.uf2
+cp pico-littlefs/example1.uf2 /media/devel/RP2350/
+Hit any key
+File list
+.
+..
+boot_count
+End of list
+Creating 32 files
+File list
+.
+..
+1102482297.tst
+11361199254.tst
+11365387957.tst
+1142070520.tst
+11432928781.tst
+11534026769.tst
+11593462211.tst
+11710712378.tst
+11724963642.tst
+1182134908.tst
+11889266337.tst
+11919245938.tst
+11940550344.tst
+11973042086.tst                                                                 
+12065397316.tst                                                                 
+12097594913.tst                                                                 
+12122227159.tst                                                                 
+1227147813.tst                                                                  
+1325440193.tst                                                                  
+1561452928.tst                                                                  
+1605469320.tst                                                                  
+1722667955.tst                                                                  
+1743857535.tst                                                                  
+175995994.tst                                                                   
+1854050552.tst                                                                  
+1875446856.tst                                                                  
+1879495858.tst                                                                  
+1922381330.tst                                                                  
+1924247211.tst                                                                  
+1963050743.tst                                                                  
+1973849486.tst                                                                  
+1992235279.tst                                                                  
+boot_count                                                                      
+End of list                                                                     
+FS: blocks 64, block size 4096, used 2                                          
+Renaming 32 files                                                               
+File list                                                                       
+.                                                                               
+..                                                                              
+2102448774.tst                                                                  
+21361231721.tst                                                                 
+21365431626.tst                                                                 
+2142028039.tst                                                                  
+21432894962.tst                                                                 
+21534041070.tst                                                                 
+21593487932.tst                                                                 
+21710725573.tst                                                                 
+21724916933.tst                                                                 
+2182179715.tst                                                                  
+21889211742.tst                                                                 
+21919263117.tst                                                                 
+21940557111.tst                                                                 
+21973077081.tst                                                                 
+22065402299.tst                                                                 
+22097561054.tst                                                                 
+22122211880.tst                                                                 
+2227213274.tst                                                                  
+2325397822.tst                                                                  
+2561506431.tst                                                                  
+2605439351.tst                                                                  
+2722728524.tst                                                                  
+2743875200.tst                                                                  
+275981989.tst                                                                   
+2854014215.tst                                                                  
+2875478455.tst                                                                  
+2879555917.tst                                                                  
+2922391533.tst                                                                  
+2924195668.tst                                                                  
+2962986760.tst                                                                  
+2973814897.tst                                                                  
+2992260336.tst                                                                  
+boot_count                                                                      
+End of list                                                                     
+FS: blocks 64, block size 4096, used 2                                          
+Verifying then removing 32 files                                                
+File list                                                                       
+.                                                                               
+..                                                                              
+boot_count                                                                      
+End of list                                                                     
+FS: blocks 64, block size 4096, used 2                                          
+Pass
+
+example2.uf2
+devel@pi5-80:~/rp2350-freeRTOS/build $ cp pico-littlefs/example2.uf2 /media/devel/RP2350/
+Hit any key
+FS: blocks 64, block size 4096, used 2
+Creating 200K file
+FS: blocks 64, block size 4096, used 53
+reading 200K file
+removing file
+FS: blocks 64, block size 4096, used 2
+Pass
+
+The following requires minicom ACMO
+rp2350-logic-analyzer.uf2
+cp rp2350-logic-analyzer/rp2350-logic-analyzer.uf2 /media/devel/RP2350/
+Welcome to minicom 2.8
+
+OPTIONS: I18n 
+Port /dev/ttyACM0, 10:39:03
+
+Press CTRL-A Z for help on special keys
+
+
+Unknown command
+p# - Set the first pin to receive capture data
+n# - Set how many pins to receive capture data
+f# - Set the freqency to capture data at in Hz
+t(1)(0) - Set the trigger to high or low
+    Trigger happens off first pin
+s# - Set how many samples to capture
+g - Go!
+p16
+Start pin is 16
+n4
+Total pins is 4
+f1000000
+Frequency is 1000000 div is 150.000000
+Trigger set to 1 or Trigger set to 0
