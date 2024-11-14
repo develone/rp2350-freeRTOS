@@ -1,0 +1,86 @@
+devel@pi5-80:~ $ git clone https://github.com/develone/rp2350-freeRTOS.git
+Cloning into 'rp2350-freeRTOS'...
+remote: Enumerating objects: 195, done.
+remote: Counting objects: 100% (195/195), done.
+remote: Compressing objects: 100% (169/169), done.
+remote: Total 195 (delta 28), reused 190 (delta 23), pack-reused 0 (from 0)
+Receiving objects: 100% (195/195), 1.80 MiB | 6.11 MiB/s, done.
+Resolving deltas: 100% (28/28), done.
+devel@pi5-80:~ $ cd rp2350-freeRTOS
+devel@pi5-80:~/rp2350-freeRTOS $ mkdir build
+devel@pi5-80:~/rp2350-freeRTOS $ cd freertos/
+devel@pi5-80:~/rp2350-freeRTOS/freertos $ git clone https://github.com/raspberrypi/FreeRTOS-Kernel.git
+Cloning into 'FreeRTOS-Kernel'...
+remote: Enumerating objects: 163154, done.
+remote: Counting objects: 100% (58/58), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 163154 (delta 51), reused 44 (delta 43), pack-reused 163096 (from 1)
+Receiving objects: 100% (163154/163154), 109.75 MiB | 27.93 MiB/s, done.
+Resolving deltas: 100% (117057/117057), done.
+devel@pi5-80:~/rp2350-freeRTOS/freertos $ cd FreeRTOS-Kernel/
+devel@pi5-80:~/rp2350-freeRTOS/freertos/FreeRTOS-Kernel $ git submodule update --init
+Submodule 'ThirdParty/FreeRTOS-Kernel-Community-Supported-Ports' (https://github.com/FreeRTOS/FreeRTOS-Kernel-Community-Supported-Ports) registered for path 'portable/ThirdParty/Community-Supported-Ports'
+Submodule 'ThirdParty/FreeRTOS-Kernel-Partner-Supported-Ports' (https://github.com/FreeRTOS/FreeRTOS-Kernel-Partner-Supported-Ports) registered for path 'portable/ThirdParty/Partner-Supported-Ports'
+Cloning into '/home/devel/rp2350-freeRTOS/freertos/FreeRTOS-Kernel/portable/ThirdParty/Community-Supported-Ports'...
+Cloning into '/home/devel/rp2350-freeRTOS/freertos/FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports'...
+Submodule path 'portable/ThirdParty/Community-Supported-Ports': checked out '9c5bad7b2f42b4e8420f12290b9bc085d3309e8b'
+Submodule path 'portable/ThirdParty/Partner-Supported-Ports': checked out 'dc3afc6e837426b4bda81bbb6cf45bfb6f34c7e9'
+
+devel@pi5-80:~/rp2350-freeRTOS/freertos/FreeRTOS-Kernel $ cd ../../build/
+devel@pi5-80:~/rp2350-freeRTOS/build $ cmake .. -DPICO_BOARD=pico2 -DPICO_PLATFORM=rp2350
+Using PICO_SDK_PATH from environment ('/home/devel/pico2/pico-sdk')
+PICO_SDK_PATH is /home/devel/pico2/pico-sdk
+Target board (PICO_BOARD) is 'pico2'.
+Using board configuration from /home/devel/pico2/pico-sdk/src/boards/include/boards/pico2.h
+Pico Platform (PICO_PLATFORM) is 'rp2350-arm-s'.
+-- Defaulting build type to 'Release' since not specified.
+Defaulting compiler (PICO_COMPILER) to 'pico_arm_cortex_m33_gcc' since not specified.
+Configuring toolchain based on PICO_COMPILER 'pico_arm_cortex_m33_gcc'
+Defaulting PICO_GCC_TRIPLE to 'arm-none-eabi'
+-- The C compiler identification is GNU 12.2.1
+-- The CXX compiler identification is GNU 12.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/arm-none-eabi-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/arm-none-eabi-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/arm-none-eabi-gcc
+Build type is Release
+CMake Warning at /home/devel/pico2/pico-sdk/tools/Findpicotool.cmake:28 (message):
+  No installed picotool with version 2.0.0 found - building from source
+
+  It is recommended to build and install picotool separately, or to set
+  PICOTOOL_FETCH_FROM_GIT_PATH to a common directory for all your SDK
+  projects
+Call Stack (most recent call first):
+  /home/devel/pico2/pico-sdk/tools/CMakeLists.txt:138 (find_package)
+  /home/devel/pico2/pico-sdk/src/cmake/on_device.cmake:33 (pico_init_picotool)
+  /home/devel/pico2/pico-sdk/src/rp2350/boot_stage2/CMakeLists.txt:57 (pico_add_dis_output)
+  /home/devel/pico2/pico-sdk/src/rp2350/boot_stage2/CMakeLists.txt:100 (pico_define_boot_stage2)
+
+
+Downloading Picotool
+-- Found Python3: /usr/bin/python3 (found version "3.11.2") found components: Interpreter 
+TinyUSB available at /home/devel/pico2/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040; enabling build support for USB.
+BTstack available at /home/devel/pico2/pico-sdk/lib/btstack
+cyw43-driver available at /home/devel/pico2/pico-sdk/lib/cyw43-driver
+lwIP available at /home/devel/pico2/pico-sdk/lib/lwip
+mbedtls available at /home/devel/pico2/pico-sdk/lib/mbedtls
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/devel/rp2350-freeRTOS/build
+make
+
+[ 97%] Building C object rp2350-logic-analyzer/CMakeFiles/rp2350-logic-analyzer.dir/home/devel/pico2/pico-sdk/lib/tinyusb/src/tusb.c.obj
+[ 98%] Building C object rp2350-logic-analyzer/CMakeFiles/rp2350-logic-analyzer.dir/home/devel/pico2/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+[ 98%] Building C object rp2350-logic-analyzer/CMakeFiles/rp2350-logic-analyzer.dir/home/devel/pico2/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
+[ 98%] Building C object rp2350-logic-analyzer/CMakeFiles/rp2350-logic-analyzer.dir/home/devel/pico2/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
+[ 98%] Building C object rp2350-logic-analyzer/CMakeFiles/rp2350-logic-analyzer.dir/home/devel/pico2/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj
+[100%] Linking CXX executable rp2350-logic-analyzer.elf
+[100%] Built target rp2350-logic-analyzer
