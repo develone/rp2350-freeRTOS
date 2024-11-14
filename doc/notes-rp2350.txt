@@ -1,0 +1,346 @@
+10/24/24
+The following video was needed to learn about FreeRTOS-Kernel for pico2
+
+git clone https://github.com/develone/rp2350-freeRTOS-tests.git
+
+cd rp2350-freeRTOS-tests/freertos/
+
+These steps are needed since my github already has a repo FreeRTOS-Kernel.git
+
+git clone https://github.com/raspberrypi/FreeRTOS-Kernel.git
+
+cd FreeRTOS-Kernel/
+
+git submodule update --init
+
+cd ../../
+
+git clone https://github.com/develone/pico-littlefs.git
+
+cd pico-littlefs 
+
+git submodule update --init
+These 2 submodules are not updated very frequently 
+
+littlefs-lib 4364b3ac5e91a0be8b6f6138318f4e47fda4a6a7 Mon Mar 28 16:03:01 2022
+stdinit-lib b0857dfbeba4081fbcdeab69f2eb16aaf31e3ee6 Mon Mar 28 16:03:01 2022
+
+cd ..
+
+./compile
+
+devel@pi5-80:~/rp2350-freeRTOS-tests $ ./compile.sh 
+Using PICO_SDK_PATH from environment ('/home/devel/pico-sdk')
+PICO_SDK_PATH is /home/devel/pico-sdk
+Target board (PICO_BOARD) is 'pico2'.
+Using board configuration from /home/devel/pico-sdk/src/boards/include/boards/pico2.h
+Auto-converting non-specific PICO_PLATFORM='rp2350' to 'rp2350-arm-s'
+Defaulting platform (PICO_PLATFORM) to 'rp2350-arm-s' based on PICO_BOARD setting.
+-- Defaulting build type to 'Release' since not specified.
+Defaulting compiler (PICO_COMPILER) to 'pico_arm_cortex_m33_gcc' since not specified.
+Configuring toolchain based on PICO_COMPILER 'pico_arm_cortex_m33_gcc'
+Defaulting PICO_GCC_TRIPLE to 'arm-none-eabi'
+-- The C compiler identification is GNU 12.2.1
+-- The CXX compiler identification is GNU 12.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/arm-none-eabi-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/arm-none-eabi-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/arm-none-eabi-gcc
+Build type is Release
+CMake Warning at /home/devel/pico-sdk/tools/Findpicotool.cmake:28 (message):
+  No installed picotool with version 2.0.0 found - building from source
+
+  It is recommended to build and install picotool separately, or to set
+  PICOTOOL_FETCH_FROM_GIT_PATH to a common directory for all your SDK
+  projects
+Call Stack (most recent call first):
+  /home/devel/pico-sdk/tools/CMakeLists.txt:138 (find_package)
+  /home/devel/pico-sdk/src/cmake/on_device.cmake:33 (pico_init_picotool)
+  /home/devel/pico-sdk/src/rp2350/boot_stage2/CMakeLists.txt:57 (pico_add_dis_output)
+  /home/devel/pico-sdk/src/rp2350/boot_stage2/CMakeLists.txt:100 (pico_define_boot_stage2)
+
+
+Downloading Picotool
+-- Found Python3: /usr/bin/python3 (found version "3.11.2") found components: Interpreter 
+TinyUSB available at /home/devel/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040; enabling build support for USB.
+BTstack available at /home/devel/pico-sdk/lib/btstack
+cyw43-driver available at /home/devel/pico-sdk/lib/cyw43-driver
+lwIP available at /home/devel/pico-sdk/lib/lwip
+mbedtls available at /home/devel/pico-sdk/lib/mbedtls
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    FREERTOS_KERNEL_PATH
+
+
+-- Build files have been written to: /home/devel/rp2350-freeRTOS-tests/build
+[  0%] Built target picotoolForceReconfigure
+[  0%] Creating directories for 'picotoolBuild'
+[  0%] No download step for 'picotoolBuild'
+[  1%] No update step for 'picotoolBuild'
+[  2%] No patch step for 'picotoolBuild'
+[  3%] Performing configure step for 'picotoolBuild'
+Not searching for unused variables given on the command line.
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+.//home/devel/rp2350-freeRTOS-tests/build/_deps/picotool/
+-- Using the single-header code from /home/devel/rp2350-freeRTOS-tests/build/_deps/picotool-src/lib/nlohmann_json/single_include/
+-- Found Python3: /usr/bin/python3 (found version "3.11.2") found components: Interpreter 
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+libUSB is not found - no USB support will be built
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/devel/rp2350-freeRTOS-tests/build/_deps/picotool-build
+[  3%] Performing build step for 'picotoolBuild'
+[ 67%] Built target mbedcrypto
+[ 75%] Built target mbedx509
+[ 85%] Built target mbedtls
+[ 87%] Built target errors
+[ 88%] Built target elf
+[ 91%] Built target bintool
+[ 93%] Built target elf2uf2
+[100%] Built target picotool
+[  4%] Performing install step for 'picotoolBuild'
+[ 67%] Built target mbedcrypto
+[ 75%] Built target mbedx509
+[ 85%] Built target mbedtls
+[ 87%] Built target errors
+[ 88%] Built target elf
+[ 91%] Built target bintool
+[ 93%] Built target elf2uf2
+[100%] Built target picotool
+Install the project...
+-- Install configuration: "Release"
+[  4%] Performing test step for 'picotoolBuild'
+picotool v2.0.0 (Linux, GNU-12.2.0, Release)
+[  5%] Completed 'picotoolBuild'
+[  5%] Built target picotoolBuild
+[  5%] Building ASM object pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+[  5%] Linking ASM executable bs2_default.elf
+[  5%] Built target bs2_default
+[  6%] Generating bs2_default.bin
+[  6%] Generating bs2_default_padded_checksummed.S
+[  6%] Built target bs2_default_padded_checksummed_asm
+[  7%] Building C object pico-littlefs/CMakeFiles/example0.dir/example0.c.obj
+[  7%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[  8%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[  8%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2350/pico_platform/platform.c.obj
+[  9%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[  9%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 10%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 10%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 11%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 11%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 12%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 12%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 13%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 13%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 14%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_time/time.c.obj
+[ 14%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 15%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 15%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 15%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 16%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/common/pico_util/queue.c.obj
+[ 16%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 17%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 17%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 18%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 18%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 20%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 20%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 21%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_divider/divider.c.obj
+[ 21%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 22%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 22%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 23%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 23%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 24%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 24%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 25%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 25%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.obj
+[ 26%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 26%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.obj
+[ 27%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.obj
+[ 27%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.obj
+[ 27%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.obj
+[ 28%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 28%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.obj
+[ 29%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.obj
+[ 29%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 30%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 30%] Building CXX object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 31%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 31%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 32%] Building ASM object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 32%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 33%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 33%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 34%] Building C object pico-littlefs/CMakeFiles/example0.dir/littlefs-lib/lfs.c.obj
+[ 34%] Building C object pico-littlefs/CMakeFiles/example0.dir/littlefs-lib/pico_hal.c.obj
+[ 35%] Building C object pico-littlefs/CMakeFiles/example0.dir/home/devel/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+[ 35%] Building C object pico-littlefs/CMakeFiles/example0.dir/stdinit-lib/stdinit.c.obj
+[ 36%] Linking CXX executable example0.elf
+[ 36%] Built target example0
+[ 36%] Building C object pico-littlefs/CMakeFiles/example1.dir/example1.c.obj
+[ 37%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 37%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 38%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2350/pico_platform/platform.c.obj
+[ 38%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 38%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 40%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 40%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 41%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 41%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 42%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 42%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 43%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 43%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 44%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_time/time.c.obj
+[ 44%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 45%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 45%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 46%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 46%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/common/pico_util/queue.c.obj
+[ 47%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 47%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 48%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 48%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 49%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 49%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 50%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 50%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_divider/divider.c.obj
+[ 50%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 51%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 51%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 52%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 52%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 53%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 53%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 54%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 54%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.obj
+[ 55%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 55%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.obj
+[ 56%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.obj
+[ 56%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.obj
+[ 57%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.obj
+[ 57%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 58%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.obj
+[ 58%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.obj
+[ 60%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 60%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 61%] Building CXX object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 61%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 62%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 62%] Building ASM object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 62%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 63%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 63%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 64%] Building C object pico-littlefs/CMakeFiles/example1.dir/littlefs-lib/lfs.c.obj
+[ 64%] Building C object pico-littlefs/CMakeFiles/example1.dir/littlefs-lib/pico_hal.c.obj
+[ 65%] Building C object pico-littlefs/CMakeFiles/example1.dir/home/devel/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+[ 65%] Building C object pico-littlefs/CMakeFiles/example1.dir/stdinit-lib/stdinit.c.obj
+[ 66%] Linking CXX executable example1.elf
+[ 66%] Built target example1
+[ 66%] Building C object pico-littlefs/CMakeFiles/example2.dir/example2.c.obj
+[ 67%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 67%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 68%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2350/pico_platform/platform.c.obj
+[ 68%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 69%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 69%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 70%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 70%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 71%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 71%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 72%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 72%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 73%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 73%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_time/time.c.obj
+[ 73%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 74%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 74%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 75%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 75%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/common/pico_util/queue.c.obj
+[ 76%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 76%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 77%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 77%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 78%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 78%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 80%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 80%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_divider/divider.c.obj
+[ 81%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 81%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 82%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 82%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 83%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 83%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 84%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 84%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 85%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.obj
+[ 85%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 85%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.obj
+[ 86%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.obj
+[ 86%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.obj
+[ 87%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.obj
+[ 87%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 88%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.obj
+[ 88%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.obj
+[ 89%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 89%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 90%] Building CXX object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 90%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 91%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 91%] Building ASM object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 92%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 92%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 93%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 93%] Building C object pico-littlefs/CMakeFiles/example2.dir/littlefs-lib/lfs.c.obj
+[ 94%] Building C object pico-littlefs/CMakeFiles/example2.dir/littlefs-lib/pico_hal.c.obj
+[ 94%] Building C object pico-littlefs/CMakeFiles/example2.dir/home/devel/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+[ 95%] Building C object pico-littlefs/CMakeFiles/example2.dir/stdinit-lib/stdinit.c.obj
+[ 95%] Linking CXX executable example2.elf
+[ 95%] Built target example2
+[ 96%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/event_groups.c.obj
+[ 96%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/list.c.obj
+[ 96%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/queue.c.obj
+[ 97%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/stream_buffer.c.obj
+[ 97%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/tasks.c.obj
+[ 98%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/timers.c.obj
+[ 98%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/portable/MemMang/heap_3.c.obj
+[100%] Building C object freertos-RPi/CMakeFiles/freertos.dir/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj
+[100%] Linking C static library libfreertos.a
+[100%] Built target freertos
+
+depress boot
+
+devel@pi5-80:~/rp2350-freeRTOS-tests $ cp build/pico-littlefs/example0.uf2 /media/devel/RP2350/
+on minico using connect uart 
+
+format (N/y) ? 
+FS: blocks 64, block size 4096, used 2
+Boot count: 1
+File size (should be 4) : 4
+
+ 
