@@ -1,3 +1,15 @@
+10 steps for using repo rp2350-freeRTOS.git
+	git clone https://github.com/develone/rp2350-freeRTOS.git
+	cd rp2350-freeRTOS
+	mkdir build
+	cd freertos/
+	git clone https://github.com/raspberrypi/FreeRTOS-Kernel.git
+	cd FreeRTOS-Kernel/
+	git submodule update --init
+	cd ../../build/
+	cmake .. -DPICO_BOARD=pico2 -DPICO_PLATFORM=rp2350
+	make
+
 devel@pi5-80:~ $ git clone https://github.com/develone/rp2350-freeRTOS.git
 Cloning into 'rp2350-freeRTOS'...
 remote: Enumerating objects: 195, done.
