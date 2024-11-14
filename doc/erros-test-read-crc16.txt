@@ -1,0 +1,24 @@
+When uncommenting add_subdirectory(test-read-crc16) in top level CMakeLists.txt
+The make get the follow error. 
+-- Configuring done
+CMake Error at test-read-crc16/CMakeLists.txt:1 (add_executable):
+  Cannot find source file:
+
+    FreeRTOS.h
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+
+
+-- Generating done
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+make: *** [Makefile:306: cmake_check_build_system] Error 1
+
+make 
+[ 80%] Linking CXX executable test-read-crc16.elf
+/usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/bin/ld: CMakeFiles/test-read-crc16.dir/home/devel/pico2/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj: in function `runtime_init':
+/home/devel/pico2/pico-sdk/src/rp2_common/pico_crt0/crt0.S:291: undefined reference to `main'
+collect2: error: ld returned 1 exit status
+make[2]: *** [test-read-crc16/CMakeFiles/test-read-crc16.dir/build.make:1835: test-read-crc16/test-read-crc16.elf] Error 1
+make[1]: *** [CMakeFiles/Makefile2:2436: test-read-crc16/CMakeFiles/test-read-crc16.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
