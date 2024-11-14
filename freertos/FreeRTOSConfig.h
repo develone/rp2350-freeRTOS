@@ -80,14 +80,14 @@
 #define INCLUDE_xTaskAbortDelay                 0
 #define INCLUDE_xTaskGetHandle                  0
 #define INCLUDE_xTaskResumeFromISR              1
-#if PICO_2350 
+/*#if PICO_2350 */
 #define configENABLE_MPU			0
 #define configENABLE_TRUSTZONE	 		0
 #define configRUN_FREEROS_SECURE_ONLY		1
 #define configENABLE_FPU			1
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY	16
 #define configCPU_CLOCK_HZ			150000000
-#endif
+/*#endifi*/
 /* A header file that defines trace macro can be included here. */
 
 #endif /* FREERTOS_CONFIG_H */
