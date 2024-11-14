@@ -1,0 +1,125 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CMakeLists.txt
+	modified:   compile.sh
+	deleted:    freertos/FreeRTOSConfig.h.tst
+	deleted:    freertos/location-freertos-2350.txt
+	modified:   test-read-crc16/CMakeLists.txt
+	deleted:    test-read-crc16/lfs.c
+	modified:   test-read-crc16/lfs.h
+	modified:   test-read-crc16/lfs_util.h
+	modified:   test-read-crc16/main.c
+	deleted:    test-read-crc16/pico_hal.c
+	deleted:    test-read-crc16/pico_hal.h
+	modified:   test-read-crc16/vi.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	build/
+	freertos/FreeRTOS-Kernel/
+	littlefs/
+	make_output.txt
+	status.txt
+	test-read-crc16/FreeRTOS.h
+	test-read-crc16/fs.c
+	test-read-crc16/fs.h
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+devel@pi5-70:~ $ env
+SHELL=/bin/bash
+PICO_FREERTOS=/home/devel/rp2350-freeRTOS-tests/freertos
+NO_AT_BRIDGE=1
+PICO_2350=1
+PWD=/home/devel
+PYENV_VIRTUALENV_INIT=1
+LOGNAME=devel
+XDG_SESSION_TYPE=tty
+PICTOOL_FETCH_FROM_GITHUB=/home/devel/pico2/BUILT_PICOTOOL
+PICO_EXTRAS_PATH=/home/devel/pico-extras
+MOTD_SHOWN=pam
+PICO_SDK_PATH=/home/devel/pico2/pico-sdk
+HOME=/home/devel
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+SSH_CONNECTION=192.168.1.240 54862 192.168.1.93 22
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+USER=devel
+DISPLAY=localhost:11.0
+SHLVL=1
+XDG_SESSION_ID=21
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=192.168.1.240 54862 22
+LC_ALL=en_US.UTF-8
+PATH=/home/devel/.pyenv/plugins/pyenv-virtualenv/shims:/home/devel/.pyenv/shims:/home/devel/.pyenv/bin:/home/devel/local/openocd/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/1
+TEXTDOMAIN=Linux-PAM
+_=/usr/bin/env
+
+#!/bin/bash
+rm -rf build 
+mkdir build
+cd build/
+cmake -DPICO_BOARD=pico2   ..
+#make
+
+devel@pi5-70:~/rp2350-freeRTOS-tests $ ./compile.sh 
+Using PICO_SDK_PATH from environment ('/home/devel/pico2/pico-sdk')
+PICO_SDK_PATH is /home/devel/pico2/pico-sdk
+Target board (PICO_BOARD) is 'pico2'.
+Using board configuration from /home/devel/pico2/pico-sdk/src/boards/include/boards/pico2.h
+Auto-converting non-specific PICO_PLATFORM='rp2350' to 'rp2350-arm-s'
+Defaulting platform (PICO_PLATFORM) to 'rp2350-arm-s' based on PICO_BOARD setting.
+-- Defaulting build type to 'Release' since not specified.
+Defaulting compiler (PICO_COMPILER) to 'pico_arm_cortex_m33_gcc' since not specified.
+Configuring toolchain based on PICO_COMPILER 'pico_arm_cortex_m33_gcc'
+Defaulting PICO_GCC_TRIPLE to 'arm-none-eabi'
+-- The C compiler identification is GNU 12.2.1
+-- The CXX compiler identification is GNU 12.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/arm-none-eabi-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/arm-none-eabi-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/arm-none-eabi-gcc
+Build type is Release
+CMake Warning at /home/devel/pico2/pico-sdk/tools/Findpicotool.cmake:28 (message):
+  No installed picotool with version 2.0.0 found - building from source
+
+  It is recommended to build and install picotool separately, or to set
+  PICOTOOL_FETCH_FROM_GIT_PATH to a common directory for all your SDK
+  projects
+Call Stack (most recent call first):
+  /home/devel/pico2/pico-sdk/tools/CMakeLists.txt:138 (find_package)
+  /home/devel/pico2/pico-sdk/src/cmake/on_device.cmake:33 (pico_init_picotool)
+  /home/devel/pico2/pico-sdk/src/rp2350/boot_stage2/CMakeLists.txt:57 (pico_add_dis_output)
+  /home/devel/pico2/pico-sdk/src/rp2350/boot_stage2/CMakeLists.txt:100 (pico_define_boot_stage2)
+
+
+Downloading Picotool
+-- Found Python3: /usr/bin/python3 (found version "3.11.2") found components: Interpreter 
+TinyUSB available at /home/devel/pico2/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040; enabling build support for USB.
+BTstack available at /home/devel/pico2/pico-sdk/lib/btstack
+cyw43-driver available at /home/devel/pico2/pico-sdk/lib/cyw43-driver
+lwIP available at /home/devel/pico2/pico-sdk/lib/lwip
+mbedtls available at /home/devel/pico2/pico-sdk/lib/mbedtls
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/devel/rp2350-freeRTOS-tests/build
+
+cd buiid
+
+make VERBOSE=1 > make_output.txt 2>&1
