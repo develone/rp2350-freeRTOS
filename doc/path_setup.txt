@@ -1,0 +1,19 @@
+export PICO_EXTRAS_PATH=/home/devel/pico-extras
+#export PICO_SDK_PATH=/home/devel/pico/pico-sdk
+export PICO_SDK_PATH=/home/devel/pico2/pico-sdk
+#export PICO_2350=1
+#export PICO_FREERTOS=/home/devel/rp2350-freeRTOS-tests/freertos
+export PICTOOL_FETCH_FROM_GITHUB=/home/devel/pico2/BUILT_PICOTOOL
+#export PATH="$HOME/.pyenv/bin:$HOME/local/openocd/bin:$HOME/qemu-6.2.0-rpios/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$HOME/local/openocd/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+
+
+ 
+echo $FREERTOS_KERNEL_PATH
+/home/devel/pico2/freertos
+ 
+echo $PICTOOL_FETCH_FROM_GITHUB
+/home/devel/pico2/BUILT_PICOTOOL
