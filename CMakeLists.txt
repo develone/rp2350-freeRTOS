@@ -9,6 +9,7 @@ include(pico_sdk_import.cmake)
 project(Pico-FreeRTOS)
 
 pico_sdk_init()
+#add_subdirectory(2tasks)
 add_subdirectory(littlefs)
 add_subdirectory(lifting)
 add_subdirectory(cir-buf)
@@ -23,4 +24,3 @@ add_subdirectory(rp2350-logic-analyzer)
 #add_subdirectory(Mutex)
 #add_subdirectory(test-read)
 add_subdirectory(test-read-crc16)
-
