@@ -1774,7 +1774,7 @@ static int file_insert(const char* fn, char* p, int initial) {
     if (p > end)
         p = end;
 
-    if (fs_stat(fn, &statbuf) < 0) {
+    if (lfs_stat(fn, &statbuf) < 0) {
         if (!initial)
             status_line_bold_errno(fn);
         return cnt;
@@ -1786,12 +1786,12 @@ static int file_insert(const char* fn, char* p, int initial) {
     }
     size = (statbuf.size < 0x7fffffff ? statbuf.size : 0x7fffffff);
     p += text_hole_make(p, size);
-    if (fs_file_open(&fd, fn, LFS_O_RDONLY) < 0) {
+    if (lfs_file_open(&fd, fn, LFS_O_RDONLY) < 0) {
         if (!initial)
             status_line_bold_errno(fn);
         return cnt;
     }
-    cnt = fs_file_read(&fd, p, size);
+    cnt = lfs_file_read(&fd, p, size);
     if (cnt < 0) {
         status_line_bold_errno(fn);
         p = text_hole_delete(p, p + size - 1, NO_UNDO); // un-do buffer insert
@@ -1804,7 +1804,7 @@ static int file_insert(const char* fn, char* p, int initial) {
         undo_push_insert(p, size, ALLOW_UNDO);
     }
 fi:
-    fs_file_close(&fd);
+    lfs_file_close(&fd);
 
     return cnt;
 }
@@ -2033,18 +2033,18 @@ static int file_write(char* fn, char* first, char* last) {
     // By popular request we do not open file with O_TRUNC,
     // but instead ftruncate() it _after_ successful write.
     // Might reduce amount of data lost on power fail etc.
-    if (fs_file_open(&fd, fn, LFS_O_WRONLY | LFS_O_CREAT) < 0)
+    if (lfs_file_open(&fd, fn, LFS_O_WRONLY | LFS_O_CREAT) < 0)
         return -1;
     cnt = last - first + 1;
-    charcnt = fs_file_write(&fd, first, cnt);
-    fs_file_truncate(&fd, charcnt);
+    charcnt = lfs_file_write(&fd, first, cnt);
+    lfs_file_truncate(&fd, charcnt);
     if (charcnt == cnt) {
         // good write
         // modified_count = false;
     } else {
         charcnt = 0;
     }
-    fs_file_close(&fd);
+    lfs_file_close(&fd);
     return charcnt;
 }
 
@@ -2696,7 +2696,7 @@ static void colon(char* buf) {
             struct lfs_info statbuf;
 
             exp = full_path(args);
-            if (!useforce && (fn == NULL || strcmp(fn, exp) != 0) && fs_stat(exp, &statbuf) >= 0) {
+            if (!useforce && (fn == NULL || strcmp(fn, exp) != 0) && lfs_stat(exp, &statbuf) >= 0) {
                 status_line_bold("File exists (:w! overrides)");
                 goto ret;
             }
@@ -3785,17 +3785,17 @@ static void edit_file(char* fn) {
 static void* xmalloc_open_read_close(const char* filename) {
     lfs_file_t fd;
 
-    if (fs_file_open(&fd, filename, LFS_O_RDONLY) < 0)
+    if (lfs_file_open(&fd, filename, LFS_O_RDONLY) < 0)
         return NULL;
 
-    int l = fs_file_size(&fd);
+    int l = lfs_file_size(&fd);
     char* buf = malloc(l + 1);
     if (buf == NULL) {
-        fs_file_close(&fd);
+        lfs_file_close(&fd);
         return NULL;
     }
-    fs_file_read(&fd, buf, l);
-    fs_file_close(&fd);
+    lfs_file_read(&fd, buf, l);
+    lfs_file_close(&fd);
     buf[l] = 0;
     return buf;
 }
@@ -3824,7 +3824,7 @@ int vi(int x, int y, int ac, char* argv[]) {
         char* exrc = "/.exrc";
         struct lfs_info st;
 
-        if (fs_stat(exrc, &st) >= 0)
+        if (lfs_stat(exrc, &st) >= 0)
             cmds = xmalloc_open_read_close(exrc);
 
         if (cmds) {

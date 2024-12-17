@@ -5,10 +5,14 @@ elseif("${PICO_PLATFORM}" STREQUAL "rp2350-arm-s")
 elseif("${PICO_PLATFORM}" STREQUAL "rp2350-riscv")
     include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2350_RISC-V/FreeRTOS_Kernel_import.cmake)
 endif()
-
+#include_directories(/home/devel/rp2350-freeRTOS/test-read-crc16 )
+include_directories( /home/devel/pico2/freertos-lib/FreeRTOS-Kernel/include )
+#include_directories(/home/devel/pico2/freertos/FreeRTOS-Kernel/include )
+include_directories(/home/devel/pico2/freertos)
 include_directories("${CMAKE_CURRENT_LIST_DIR} ")
 include_directories( FreeRTOS-Kernel/include)
-include_directories( FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/include)
+include_directories( /home/devel/pico2/freertos-lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/include)
+include_directories( /home/devel/pico2/freertos-lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2350/non_secure )
 add_executable(test-read-crc16
         main.c crc16.h xreceive.h xtransmit.h  vi.c vi.h comprogs.h   pnmio.h 
 )
